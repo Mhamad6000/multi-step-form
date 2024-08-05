@@ -15,6 +15,7 @@ const config: Config = {
       },
       colors: {
         custom: {
+          // Custom color palette
           primary: {
             "marine-blue": "hsl(213, 96%, 18%)",
             "purplish-blue": "hsl(243, 100%, 62%)",
@@ -27,7 +28,7 @@ const config: Config = {
             "light-gray": "hsl(229, 24%, 87%)",
             magnolia: "hsl(217, 100%, 97%)",
             alabaster: "hsl(231, 100%, 99%)",
-            White: "hsl(0, 0%, 100%)",
+            white: "hsl(0, 0%, 100%)",
           },
         },
       },

@@ -5,9 +5,31 @@
 @layer components {
   /* using tailwind magic for creating a button component and use it when ever we need it */
   .btn-blue {
-    @apply bg-custom-primary-marine-blue text-custom-neutral-white hover:bg-custom-primary-marine-blue-hover transition duration-200 px-10 py-3 rounded-lg;
+    @apply bg-custom-primary-marine-blue text-custom-neutral-white hover:bg-custom-primary-marine-blue-hover font-ubuntu-medium transition duration-200 px-7 py-3 rounded-lg;
+  }
+  .btn-prev {
+    @apply text-custom-neutral-cool-gray hover:text-custom-primary-marine-blue transition duration-200 font-ubuntu-medium;
   }
   .custom-input {
-    @apply border px-5 py-3 rounded-lg border-custom-neutral-light-gray focus:border-custom-primary-purplish-blue;
+    @apply border-2 px-4 py-3 rounded-lg border-custom-neutral-light-gray focus:border-custom-primary-purplish-blue ring-0 outline-none;
   }
+}
+
+@font-face {
+  font-family: "ubuntu-regular";
+  src: url("/assets/fonts/Ubuntu-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ubuntu-bold";
+  src: url("/assets/fonts/Ubuntu-Bold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ubuntu-medium";
+  src: url("/assets/fonts/Ubuntu-Medium.ttf");
+  font-weight: normal;
+  font-style: normal;
 }

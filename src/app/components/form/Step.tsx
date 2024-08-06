@@ -33,7 +33,7 @@ export default function Step({
         <span className="text-custom-neutral-light-gray text-sm uppercase font-light">
           {spanText}
         </span>
-        <span className="text-custom-neutral-white uppercase font-semibold">
+        <span className="text-custom-neutral-white uppercase font-ubuntu-medium">
           {title}
         </span>
       </div>

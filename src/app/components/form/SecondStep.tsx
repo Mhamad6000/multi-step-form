@@ -1,13 +1,13 @@
 import InputField from "@/app/components/form/InputField";
 
-export default function FirstStep() {
+export default function SecondStep() {
   return (
     <div>
       <h1 className="text-custom-primary-marine-blue font-bold text-3xl mb-2 font-ubuntu-bold">
-        Personal info
+        Select your plan
       </h1>
       <p className="text-custom-neutral-cool-gray mb-10">
-        Please provie your name, email address, and phone number
+        You have the option of monthly or yearly billing.
       </p>
       <div className="flex flex-col gap-6">
         <InputField

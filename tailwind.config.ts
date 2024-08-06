@@ -18,6 +18,7 @@ const config: Config = {
           // Custom color palette
           primary: {
             "marine-blue": "hsl(213, 96%, 18%)",
+            "marine-blue-hover": "hsl(214, 68%, 32%)",
             "purplish-blue": "hsl(243, 100%, 62%)",
             "pastel-blue": "hsl(228, 100%, 84%)",
             "light-blue": "hsl(206, 94%, 87%)",

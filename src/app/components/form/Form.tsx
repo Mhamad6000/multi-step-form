@@ -1,11 +1,12 @@
 // we used use lient because we are using state in this component
 "use client";
 import Image from "next/image";
-import Step from "../Step";
+import Step from "./Step";
 import { useState } from "react";
+import FirstStep from "./FirstStep";
 
 export default function Form() {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState<number>(1);
   const steps: Step[] = [
     {
       id: 1,
@@ -48,14 +49,19 @@ export default function Form() {
                 order={index + 1}
                 title={step.title}
                 spanText={step.spanText}
-                isActive={index === 0}
+                isActive={index + 1 === activeStep}
+                setActiveStep={setActiveStep}
               />
             );
           })}
         </div>
       </div>
-
-      <button className="btn-blue h-min">Confirm</button>
+      <div className="">
+        <FirstStep />
+        <button className="btn-blue h-min" type="button">
+          Next Step
+        </button>
+      </div>
     </div>
   );
 }

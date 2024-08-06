@@ -1,5 +1,5 @@
 // using @/ for alias path is usefull because when we use alias path, we can easily change the path in tsconfig.json
-import Form from "@/app/components/home/Form";
+import Form from "@/app/components/form/Form";
 
 export default function Home() {
   return (

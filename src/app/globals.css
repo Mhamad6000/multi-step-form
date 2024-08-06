@@ -5,7 +5,9 @@
 @layer components {
   /* using tailwind magic for creating a button component and use it when ever we need it */
   .btn-blue {
-    @apply bg-custom-primary-marine-blue text-custom-neutral-white hover:bg-custom-primary-pastel-blue transition duration-200 px-10 py-3 rounded-lg;
+    @apply bg-custom-primary-marine-blue text-custom-neutral-white hover:bg-custom-primary-marine-blue-hover transition duration-200 px-10 py-3 rounded-lg;
+  }
+  .custom-input {
+    @apply border px-5 py-3 rounded-lg border-custom-neutral-light-gray focus:border-custom-primary-purplish-blue;
   }
 }
-

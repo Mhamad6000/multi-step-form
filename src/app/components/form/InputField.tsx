@@ -1,15 +1,4 @@
-import React from "react";
 import { useFormContext } from "react-hook-form";
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  hasError?: boolean;
-  errorMessage?: string;
-  placeholder?: string;
-  className?: string;
-  type?: string;
-  name: string;
-}
 
 const InputField = ({
   label,

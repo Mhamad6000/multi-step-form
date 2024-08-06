@@ -1,7 +1,7 @@
 import InputField from "@/app/components/form/InputField";
 import { useFormContext } from "react-hook-form";
 import { motion } from "framer-motion";
-export default function SecondStep() {
+export default function ThirdStep() {
   const packages = [
     {
       label: "Arcade",
@@ -78,14 +78,33 @@ export default function SecondStep() {
   ];
 
   const { register, watch } = useFormContext();
-  console.log();
+  const services = [
+    {
+      label: "Online Service",
+      spanText: "Access to multiplayer games",
+      monthlyPrice: 1,
+      yearlyPrice: 10,
+    },
+    {
+      label: "Larger Storage",
+      spanText: "Extra 1TB of cloud storage",
+      monthlyPrice: 2,
+      yearlyPrice: 20,
+    },
+    {
+      label: "Customizable Profile",
+      spanText: "Custom theme on your profile",
+      monthlyPrice: 2,
+      yearlyPrice: 20,
+    },
+  ];
   return (
     <div>
       <h1 className="text-custom-primary-marine-blue font-bold text-3xl mb-2 font-ubuntu-bold">
-        Select your plan
+        Pick add-ons
       </h1>
       <p className="text-custom-neutral-cool-gray mb-10">
-        You have the option of monthly or yearly billing.
+        Add-ons help enhance your gaming experience.
       </p>
       <ul className="grid grid-cols-3 gap-5 mb-8">
         {packages?.map((pkg, index) => {
@@ -150,37 +169,38 @@ export default function SecondStep() {
           );
         })}
       </ul>
-      <div className="bg-custom-neutral-alabaster py-3 flex justify-center items-center gap-5">
-        <span
-          className={`font-ubuntu-medium transition duration-200 ${
-            watch("planOption") == true
-              ? "text-custom-neutral-cool-gray"
-              : "text-custom-primary-marine-blue"
-          }`}
-        >
-          Monthly
-        </span>
-        <label className="relative inline-flex cursor-pointer items-center w-[50px]">
-          <input
-            id="switch"
-            type="checkbox"
-            className="peer sr-only"
-            {...register("planOption", {
-              required: true,
-            })}
-          />
-          <label htmlFor="switch" className="hidden"></label>
-          <div className="peer h-6 w-[50px] rounded-full border bg-custom-primary-marine-blue after:absolute after:left-[4px] after:top-1/2 after:h-4 after:-translate-y-1/2 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-[26px] "></div>
-        </label>
-        <span
-          className={`font-ubuntu-medium transition duration-200 ${
-            watch("planOption") == true
-              ? "text-custom-primary-marine-blue"
-              : "text-custom-neutral-cool-gray"
-          }`}
-        >
-          Yearly
-        </span>
+      <div className="flex flex-col gapp-5">
+        {services?.map((service, index) => {
+          return (
+            <div key={index} className="relative">
+              <input
+                className="text-violet-500 accent-custom-primary-purplish-blue focus:ring-violet-300 border-gray-300 peer rounded-lg w-6 h-6 absolute top-7 left-4 "
+                id="custom-checkbox"
+                name="custom-checkbox"
+                type="checkbox"
+                value="custom-checkbox"
+              />
+              <label
+                className="w-[400px] h-[80px] cursor-pointer flex flex-row justify-between items-center border rounded-lg p-4  
+            active:bg-violet-700 
+            peer-focus:outline-none peer-focus:ring peer-focus:ring-violet-300 
+            peer-checked:border-violet-300 peer-checked:bg-violet-100
+            hover:bg-violet-100"
+                htmlFor="custom-checkbox"
+              >
+                <div className="flex flex-row justify-between items-center w-[380px] ml-10 mr-4">
+                  <div>
+                    <h3 className="font-bold">Online service</h3>
+                    <p className="text-sm text-gray-400">
+                      Access to multiplayer games
+                    </p>
+                  </div>
+                  <p className="font-bold text-violet-600">$10/mo</p>
+                </div>
+              </label>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { useState } from "react";
 import FirstStep from "./FirstStep";
 import { FormProvider, useForm } from "react-hook-form";
 import SecondStep from "./SecondStep";
+import ThirdStep from "./ThirdStep";
 
 export default function Form() {
   const [activeStep, setActiveStep] = useState<number>(1);
@@ -27,7 +28,7 @@ export default function Form() {
       id: 3,
       title: "Add Ons",
       spanText: "Step 3",
-      component: <FirstStep />,
+      component: <ThirdStep />,
     },
     {
       id: 4,
@@ -84,28 +85,34 @@ export default function Form() {
               );
             })}
             <div className="flex justify-between items-center mt-auto mb-5">
-              <button
-                onClick={() => {
-                  if (activeStep > 1) {
-                    setActiveStep(activeStep - 1);
-                  }
-                }}
-                className="btn-prev"
-                type="button"
-              >
-                Go Back
-              </button>
-              <button
-                onClick={() => {
-                  if (activeStep < steps.length) {
-                    setActiveStep(activeStep + 1);
-                  }
-                }}
-                className="btn-blue"
-                type="button"
-              >
-                Next Step
-              </button>
+              <div className="">
+                {activeStep > 1 && (
+                  <button
+                    onClick={() => {
+                      if (activeStep > 1) {
+                        setActiveStep(activeStep - 1);
+                      }
+                    }}
+                    className="btn-prev"
+                    type="button"
+                  >
+                    Go Back
+                  </button>
+                )}
+              </div>
+              <div className="">
+                <button
+                  onClick={() => {
+                    if (activeStep < steps.length) {
+                      setActiveStep(activeStep + 1);
+                    }
+                  }}
+                  className="btn-blue"
+                  type="button"
+                >
+                  Next Step
+                </button>
+              </div>
             </div>
           </form>
         </FormProvider>

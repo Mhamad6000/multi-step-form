@@ -11,7 +11,7 @@
     @apply text-custom-neutral-cool-gray hover:text-custom-primary-marine-blue transition duration-200 font-ubuntu-medium;
   }
   .custom-input {
-    @apply border-2 px-4 py-3 rounded-lg border-custom-neutral-light-gray focus:border-custom-primary-purplish-blue ring-0 outline-none;
+    @apply border px-4 py-3 rounded-lg border-custom-neutral-light-gray focus:border-custom-primary-purplish-blue ring-0 outline-none;
   }
 }
 

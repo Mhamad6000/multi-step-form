@@ -3,6 +3,7 @@ type Step = {
   title: string;
   spanText: string;
   component: JSX.Element;
+  isHidden: boolean;
 };
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -13,3 +14,9 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type?: string;
   name: string;
 }
+type Service = {
+  label: string;
+  spanText: string;
+  monthlyPrice: number;
+  yearlyPrice: number;
+};

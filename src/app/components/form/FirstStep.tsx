@@ -3,7 +3,7 @@ import InputField from "@/app/components/form/InputField";
 export default function FirstStep() {
   return (
     <div>
-      <h1 className="text-custom-primary-marine-blue font-bold text-3xl mb-2 font-ubuntu-bold">
+      <h1 className="text-custom-primary-marine-blue font-bold text-2xl md:text-4xl mb-2 font-ubuntu-bold">
         Personal info
       </h1>
       <p className="text-custom-neutral-cool-gray mb-10">

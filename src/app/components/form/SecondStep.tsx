@@ -78,23 +78,28 @@ export default function SecondStep() {
   ];
 
   const { register, watch } = useFormContext();
-  console.log();
+
   return (
     <div>
-      <h1 className="text-custom-primary-marine-blue font-bold text-3xl mb-2 font-ubuntu-bold">
+      <h1 className="text-custom-primary-marine-blue font-bold text-2xl md:text-4xl mb-2 font-ubuntu-bold">
         Select your plan
       </h1>
       <p className="text-custom-neutral-cool-gray mb-10">
         You have the option of monthly or yearly billing.
       </p>
-      <ul className="grid grid-cols-3 gap-5 mb-8">
+      <ul className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
         {packages?.map((pkg, index) => {
           return (
             <li key={index} className="group w-full relative">
               <input
                 type="radio"
                 className="sr-only peer"
-                value={pkg?.value}
+                value={JSON?.stringify({
+                  label: pkg?.label,
+                  monthlyPrice: pkg?.monthlyPrice,
+                  yearlyPrice: pkg?.yearlyPrice,
+                  yearlyFuture: pkg?.yearlyFuture,
+                })}
                 id={pkg?.value}
                 defaultChecked={index === 0}
                 {...register("package", {
@@ -103,7 +108,7 @@ export default function SecondStep() {
               />
               <label
                 htmlFor={pkg?.value}
-                className="border-2 w-full h-40 flex flex-col justify-between hover:bg-custom-neutral-alabaster peer-checked:bg-custom-neutral-alabaster border-custom-neutral-light-gray transition duration-200 peer-checked:border-custom-primary-purplish-blue group-hover:border-custom-primary-purplish-blue rounded-lg p-4 cursor-pointer"
+                className="border-2 w-full md:h-40 flex flex-row md:flex-col md:justify-between gap-5 md:gap-0 hover:bg-custom-neutral-alabaster peer-checked:bg-custom-neutral-alabaster border-custom-neutral-light-gray transition duration-200 peer-checked:border-custom-primary-purplish-blue group-hover:border-custom-primary-purplish-blue rounded-lg p-4 cursor-pointer"
               >
                 <div className="">{pkg?.icon}</div>
                 <div className="">

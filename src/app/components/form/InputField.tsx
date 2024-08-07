@@ -2,8 +2,6 @@ import { useFormContext } from "react-hook-form";
 
 const InputField = ({
   label,
-  hasError,
-  errorMessage,
   placeholder,
   className,
   type,

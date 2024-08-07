@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function Step({
@@ -8,16 +7,7 @@ export default function Step({
   isActive = false,
   setActiveStep,
   isHidden,
-}: //   we have three props here, order, title, and spanText
-{
-  order: number;
-  title?: string;
-  spanText?: string;
-  isActive?: boolean;
-  setActiveStep: Dispatch<SetStateAction<number>>;
-  isHidden: boolean;
-  //   we defined the type of each prop here
-}) {
+}: StepProps) {
   const { watch } = useFormContext();
   function changeActiveStep() {
     setActiveStep(order);
@@ -25,12 +15,15 @@ export default function Step({
   if (isHidden) return null;
   return (
     <button
+      //  we have a button here that has an onClick event listener that calls the changeActiveStep function when clicked
       disabled={!watch("email") || !watch("phone") || !watch("name")}
+      //  the button is disabled if the email, phone, or name fields are empty
       onClick={changeActiveStep}
       className="flex items-center gap-5 disabled:cursor-not-allowed"
     >
       <div
         className={`rounded-full flex justify-center items-center border w-10 h-10 transition duration-200 ${
+          // the button has a class name that changes based on the isActive prop
           isActive
             ? "bg-custom-primary-light-blue text-custom-primary-marine-blue border-custom-primary-light-blue"
             : "bg-transparent text-custom-neutral-white border-custom-neutral-white"

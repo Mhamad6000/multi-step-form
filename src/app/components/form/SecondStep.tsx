@@ -1,8 +1,7 @@
-import InputField from "@/app/components/form/InputField";
 import { useFormContext } from "react-hook-form";
 import { motion } from "framer-motion";
 export default function SecondStep() {
-  const packages = [
+  const packages: Package[] = [
     {
       label: "Arcade",
       monthlyPrice: 9,
@@ -76,7 +75,7 @@ export default function SecondStep() {
       value: "pro",
     },
   ];
-
+  // becouse we are using the useFormContext hook we can access the register and watch methods every where in the component
   const { register, watch } = useFormContext();
 
   return (
@@ -108,15 +107,14 @@ export default function SecondStep() {
               />
               <label
                 htmlFor={pkg?.value}
-                className="border-2 w-full md:h-40 flex flex-row md:flex-col md:justify-between gap-5 md:gap-0 hover:bg-custom-neutral-alabaster peer-checked:bg-custom-neutral-alabaster border-custom-neutral-light-gray transition duration-200 peer-checked:border-custom-primary-purplish-blue group-hover:border-custom-primary-purplish-blue rounded-lg p-4 cursor-pointer"
+                className="border-2 w-full md:h-40 flex flex-row md:flex-col md:justify-between gap-5 md:gap-0 peer-checked:bg-custom-neutral-alabaster border-custom-neutral-light-gray transition duration-200 peer-checked:border-custom-primary-purplish-blue group-hover:border-custom-primary-purplish-blue rounded-lg p-4 cursor-pointer"
               >
                 <div className="">{pkg?.icon}</div>
                 <div className="">
                   <div className="text-custom-primary-marine-blue-hover font-ubuntu-bold ">
                     {pkg?.label}
                   </div>
-
-                  {watch("planOption") == false && (
+                  {watch("planOption") == false ? (
                     <motion.div
                       initial={{ height: "auto", width: 0, opacity: 0 }}
                       animate={{ height: "auto", width: "auto", opacity: 1 }}
@@ -126,28 +124,40 @@ export default function SecondStep() {
                     >
                       ${pkg?.monthlyPrice}/mo
                     </motion.div>
-                  )}
-                  {watch("planOption") == true && (
-                    <motion.div
-                      initial={{ height: "auto", width: 0, opacity: 0 }}
-                      animate={{ height: "auto", width: "auto", opacity: 1 }}
-                      exit={{ height: 0, width: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="text-custom-neutral-cool-gray text-sm font-ubuntu-medium"
-                    >
-                      ${pkg?.yearlyPrice}/year
-                    </motion.div>
-                  )}
-                  {watch("planOption") == true && (
-                    <motion.div
-                      initial={{ height: "auto", width: "auto", opacity: 0 }}
-                      animate={{ height: "auto", width: "auto", opacity: 1 }}
-                      exit={{ height: 0, width: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="text-custom-primary-marine-blue-hover text-sm font-ubuntu-medium flex-shrink-0"
-                    >
-                      {pkg?.yearlyFuture}
-                    </motion.div>
+                  ) : (
+                    <div className="">
+                      <motion.div
+                        initial={{ height: "auto", width: 0, opacity: 0 }}
+                        animate={{
+                          height: "auto",
+                          width: "auto",
+                          opacity: 1,
+                        }}
+                        exit={{ height: 0, width: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="text-custom-neutral-cool-gray text-sm font-ubuntu-medium"
+                      >
+                        ${pkg?.yearlyPrice}/yr
+                      </motion.div>
+
+                      <motion.div
+                        initial={{
+                          height: "auto",
+                          width: "auto",
+                          opacity: 0,
+                        }}
+                        animate={{
+                          height: "auto",
+                          width: "auto",
+                          opacity: 1,
+                        }}
+                        exit={{ height: 0, width: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="text-custom-primary-marine-blue-hover text-sm font-ubuntu-medium flex-shrink-0"
+                      >
+                        {pkg?.yearlyFuture}
+                      </motion.div>
+                    </div>
                   )}
                 </div>
               </label>
@@ -158,6 +168,7 @@ export default function SecondStep() {
       <div className="bg-custom-neutral-alabaster py-3 flex justify-center items-center gap-5">
         <span
           className={`font-ubuntu-medium transition duration-200 ${
+            // check if the planOption is true or false and apply the appropriate color
             watch("planOption") == true
               ? "text-custom-neutral-cool-gray"
               : "text-custom-primary-marine-blue"
@@ -166,6 +177,7 @@ export default function SecondStep() {
           Monthly
         </span>
         <label className="relative inline-flex cursor-pointer items-center w-[50px]">
+          {/* input to change monthly to yealy plan */}
           <input
             id="switch"
             type="checkbox"
@@ -179,6 +191,7 @@ export default function SecondStep() {
         </label>
         <span
           className={`font-ubuntu-medium transition duration-200 ${
+            // check if the planOption is true or false and apply the appropriate color
             watch("planOption") == true
               ? "text-custom-primary-marine-blue"
               : "text-custom-neutral-cool-gray"

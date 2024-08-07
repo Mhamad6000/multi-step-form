@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* created some reusable styles with tailwind */
 @layer components {
   /* using tailwind magic for creating a button component and use it when ever we need it */
   .btn-blue {
@@ -14,7 +14,7 @@
     @apply border px-4 py-3 rounded-lg border-custom-neutral-light-gray focus:border-custom-primary-purplish-blue ring-0 outline-none;
   }
 }
-
+/* added custom font */
 @font-face {
   font-family: "ubuntu-regular";
   src: url("/assets/fonts/Ubuntu-Regular.ttf");
@@ -32,4 +32,10 @@
   src: url("/assets/fonts/Ubuntu-Medium.ttf");
   font-weight: normal;
   font-style: normal;
+}
+/* removed arrow in number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

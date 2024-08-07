@@ -1,9 +1,7 @@
-import InputField from "@/app/components/form/InputField";
 import { useFormContext } from "react-hook-form";
-import { motion } from "framer-motion";
 export default function ThankYouStep() {
   const { register, watch } = useFormContext();
-
+  
   return (
     <div className="flex justify-center items-center h-full flex-col">
       <svg
@@ -31,7 +29,6 @@ export default function ThankYouStep() {
         platform. if you ever need support, please feel free to email us at
         support@loremgaming.com.
       </p>
-      <div className=""></div>
     </div>
   );
 }

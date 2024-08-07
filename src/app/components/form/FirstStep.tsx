@@ -10,6 +10,7 @@ export default function FirstStep() {
         Please provie your name, email address, and phone number
       </p>
       <div className="flex flex-col gap-6">
+        {/* custom input fields for name , email , phone */}
         <InputField
           label="Name"
           id="name"

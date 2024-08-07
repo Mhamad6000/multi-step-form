@@ -22,7 +22,7 @@ export default function Step({
       className="flex items-center gap-5 disabled:cursor-not-allowed"
     >
       <div
-        className={`rounded-full flex justify-center items-center border w-10 h-10 transition duration-200 ${
+        className={`rounded-full flex justify-center items-center border w-12 h-12 md:w-10 md:h-10 transition duration-200 ${
           // the button has a class name that changes based on the isActive prop
           isActive
             ? "bg-custom-primary-light-blue text-custom-primary-marine-blue border-custom-primary-light-blue"

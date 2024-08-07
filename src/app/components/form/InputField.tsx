@@ -19,7 +19,7 @@ const InputField = ({
         <label htmlFor="name" className="text-custom-primary-marine-blue ">
           {label}
         </label>
-        <div className="">
+        <div className="hidden md:block">
           {errors[name]?.message && (
             <span className="text-custom-primary-strawberry-red text-sm">
               {errors[name]?.message.toString()}
@@ -36,6 +36,14 @@ const InputField = ({
         {...props}
         {...register(name)}
       />
+      {/* in the mobile show it below */}
+      <div className="block md:hidden pt-1 px-0.5">
+        {errors[name]?.message && (
+          <span className="text-custom-primary-strawberry-red text-sm">
+            {errors[name]?.message.toString()}
+          </span>
+        )}
+      </div>
     </div>
   );
 };

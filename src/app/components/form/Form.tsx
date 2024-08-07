@@ -16,7 +16,7 @@ import FourthStep from "@/app/components/form/FourthStep";
 import ThankYouStep from "@/app/components/form/ThankYouStep";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 export default function Form() {
   const [activeStep, setActiveStep] = useState<number>(1);
 
@@ -36,20 +36,17 @@ export default function Form() {
       ),
   });
 
-  type FormValues = {
-    name: string;
-    email: string;
-    phone: string;
-  };
-
-  const resolver: Resolver<FormValues> = yupResolver(schema);
-
   const { ...methods } = useForm<FormValues>({
     defaultValues: {
       name: "",
       email: "",
       phone: undefined,
+      package: "",
+      planOption: false,
+      services: [],
     },
+    // currently there is an issue with the types of yupResolver , we can downgrade the version of yup to fix it but i
+    // @ts-expect-error
     resolver: yupResolver(schema),
   });
   const chnageStep = (step: number) => {
@@ -159,21 +156,25 @@ export default function Form() {
             className="h-full flex flex-col self-stretch "
           >
             <div className="h-full w-full bg-custom-neutral-white rounded-xl px-5 py-8 md:py-0 relative -translate-y-28 md:-translate-y-0">
-              {steps?.map((step, index) => {
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: index + 1 === activeStep ? 1 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className={`md:mb-10 ${
-                      index + 1 === activeStep ? "block h-full" : "hidden"
-                    }`}
-                  >
-                    {step.component}
-                  </motion.div>
-                );
-              })}
+              <AnimatePresence initial={false}>
+                {steps?.map((step, index) => {
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: index + 1 === activeStep ? 1 : 0 }}
+                      transition={{
+                        duration: 0.8,
+                      }}
+                      className={`md:mb-10 ${
+                        index + 1 === activeStep ? "block h-full" : "hidden"
+                      }`}
+                    >
+                      {step.component}
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
             </div>
             {activeStep !== steps?.length && (
               <div className="flex justify-between items-center mt-auto md:mb-5 fixed md:bg-transparent h-20 bg-custom-neutral-white md:relative bottom-0 left-0 w-full px-10 md:px-5">

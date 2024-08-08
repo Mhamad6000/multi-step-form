@@ -29,9 +29,11 @@ export default function Form() {
     phone: yup
       .string()
       .required("Phone is a required field")
+      .min(10, "Phone number must be at least 10 characters")
       .matches(
-        // it changes based on the country
-        /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/,
+        // it changes based on the country 
+        // dont let user type anything beside space and numbers and + 
+        /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
         "Invalid phone number format"
       ),
   });
@@ -90,10 +92,12 @@ export default function Form() {
     },
   ];
 
-  const onSubmit: SubmitHandler<FormValues> = (data: any) => {
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
     if (methods?.formState.errors) {
       setActiveStep(activeStep + 1);
     }
+    console.log(data);
+    // reset the form after submiting it
 
     methods?.reset();
   };
